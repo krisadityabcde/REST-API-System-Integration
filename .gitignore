@@ -1,0 +1,37 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build files
+dist/
+build/
+.vite/
+.next/
+out/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Firebase credentials
+firebase.json
+firestore.rules
+firestore.indexes.json
+/backend/your_firebase_config.json
+
+# Logs & cache
+logs/
+*.log
+debug.log
+
+# VS Code settings
+.vscode/
+
+# OS system files
+.DS_Store
+Thumbs.db
