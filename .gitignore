@@ -22,7 +22,7 @@ out/
 firebase.json
 firestore.rules
 firestore.indexes.json
-D:\ITS_Campus\Semester_4\Integrasi Sistem\REST API\REST-API-System-Integration\backend\rest-api-system-integration-firebase-adminsdk-fbsvc-7fb4b26321.json
+backend/rest-api-system-integration-firebase-adminsdk-fbsvc-7fb4b26321.json
 
 # Logs & cache
 logs/
