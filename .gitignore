@@ -22,7 +22,7 @@ out/
 firebase.json
 firestore.rules
 firestore.indexes.json
-backend/rest-api-system-integration-firebase-adminsdk-fbsvc-7fb4b26321.json
+backend/rest-api-system-integration-firebase-adminsdk-fbsvc-91d24f2bab.json
 
 # Logs & cache
 logs/
