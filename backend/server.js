@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const admin = require("firebase-admin");
 
 // Inisialisasi Firebase
-const serviceAccount = require("./rest-api-system-integration-firebase-adminsdk-fbsvc-7fb4b26321.json");
+const serviceAccount = require("./rest-api-system-integration-firebase-adminsdk-fbsvc-91d24f2bab.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
