@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function TambahRestoran() {
-  const [newRestaurant, setNewRestaurant] = useState({ name: "", location: "", rating: 0 });
+  const [newRestaurant, setNewRestaurant] = useState({ name: "", location: "", kategory: "" });
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -40,17 +40,21 @@ function TambahRestoran() {
               className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
-            <input 
-              type="number" 
-              placeholder="Rating" 
-              value={newRestaurant.rating} 
-              onChange={(e) => {
-                const value = Math.min(5, Math.max(0, Number(e.target.value)));
-                setNewRestaurant({ ...newRestaurant, rating: value });
-              }} 
+            <select
+              value={newRestaurant.kategori}
+              onChange={(e) => setNewRestaurant({ ...newRestaurant, kategori: e.target.value })}
               className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
-            />
+            >
+              <option value="">Pilih Kategori</option>
+              <option value="Ayam">Ayam</option>
+              <option value="Sapi">Sapi</option>
+              <option value="Babi">Babi</option>
+              <option value="Bebek">Bebek</option>
+              <option value="Dessert">Dessert</option>
+              <option value="Camilan">Camilan</option>
+              <option value="Seafood">Seafood</option>
+            </select>
             <button 
               type="submit" 
               className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200"

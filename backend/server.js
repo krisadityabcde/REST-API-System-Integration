@@ -42,7 +42,7 @@ app.get("/restaurants/:id", async (req, res) => {
 
 // POST tambah restoran baru
 app.post("/restaurants", async (req, res) => {
-  const { name, location, rating } = req.body;
+  const { name, location, kategori } = req.body;
 
   // Hitung jumlah data dalam koleksi untuk menentukan ID baru
   const snapshot = await db.collection("restaurants").orderBy("id", "desc").limit(1).get();
@@ -52,7 +52,7 @@ app.post("/restaurants", async (req, res) => {
     newId = snapshot.docs[0].data().id + 1; // ID terakhir + 1
   }
 
-  await db.collection("restaurants").doc(newId.toString()).set({ id: newId, name, location, rating });
+  await db.collection("restaurants").doc(newId.toString()).set({ id: newId, name, location, kategori });
   res.json({ message: "Restoran berhasil ditambahkan!", id: newId });
 });
 
@@ -67,9 +67,9 @@ app.delete("/restaurants/:id", async (req, res) => {
 // PUT update restoran berdasarkan ID
 app.put("/restaurants/:id", async (req, res) => {
   const { id } = req.params;
-  const { name, location, rating } = req.body;
+  const { name, location, kategori } = req.body;
 
-  await db.collection("restaurants").doc(id).update({ name, location, rating });
+  await db.collection("restaurants").doc(id).update({ name, location, kategori });
   res.json({ message: "Restoran berhasil diperbarui!" });
 });
 

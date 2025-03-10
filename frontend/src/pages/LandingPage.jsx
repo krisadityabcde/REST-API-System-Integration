@@ -4,7 +4,7 @@ import axios from "axios";
 
 function LandingPage() {
   const [restaurants, setRestaurants] = useState([]);
-  const [filterRating, setFilterRating] = useState("All");
+  const [filterKategori, setFilterKategori] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
@@ -22,11 +22,11 @@ function LandingPage() {
     }
   };
 
-  // Filter restoran berdasarkan nama dan rating
+  // Filter restoran berdasarkan nama dan kategori
   const filteredRestaurants = restaurants.filter((resto) => {
     const matchName = resto.name.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchRating = filterRating === "All" || resto.rating >= parseFloat(filterRating);
-    return matchName && matchRating;
+    const matchCategory = filterKategori === "All" || resto.kategori === filterKategori;
+    return matchName && matchCategory;
   });
 
   return (
@@ -45,18 +45,22 @@ function LandingPage() {
               onChange={(e) => setSearchQuery(e.target.value)}
             />
 
-            {/* Dropdown Filter Rating */}
+            {/* Dropdown Filter Kategori */}
             <select
               className="px-3 py-1 bg-white text-black rounded-md cursor-pointer"
-              onChange={(e) => setFilterRating(e.target.value)}
-              value={filterRating}
+              onChange={(e) => setFilterKategori(e.target.value)}
+              value={filterKategori}
             >
-              <option value="All">Semua Rating</option>
-              <option value="5">5 ke atas</option>
-              <option value="4.5">4.5 ke atas</option>
-              <option value="4">4 ke atas</option>
-              <option value="3.5">3.5 ke atas</option>
+              <option value="All">Semua Kategori</option>
+              <option value="Ayam">Ayam</option>
+              <option value="Sapi">Sapi</option>
+              <option value="Babi">Babi</option>
+              <option value="Bebek">Bebek</option>
+              <option value="Dessert">Dessert</option>
+              <option value="Camilan">Camilan</option>
+              <option value="Seafood">Seafood</option>
             </select>
+
 
             {/* Tombol Tambah Restoran */}
             <Link to="/tambah">
@@ -78,7 +82,7 @@ function LandingPage() {
               <li key={resto.id} className="p-4 border rounded-lg flex justify-between items-center shadow bg-gray-50">
                 <div className="text-lg font-medium flex items-center gap-2">
                   <span>{resto.name} - {resto.location}</span>
-                  <span className="flex items-center">⭐ {resto.rating}</span>
+                  <span className="flex items-center">📌 {resto.kategori}</span>
                 </div>
                 <div className="space-x-2 flex items-center">
                   <Link to={`/${resto.id}/edit`}>

@@ -5,7 +5,7 @@ import axios from "axios";
 function EditRestoran() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [restaurant, setRestaurant] = useState({ name: "", location: "", rating: 0 });
+  const [restaurant, setRestaurant] = useState({ name: "", location: "", kategori: "" });
 
   useEffect(() => {
     axios.get(`http://localhost:5000/restaurants/${id}`)
@@ -43,16 +43,21 @@ function EditRestoran() {
               className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
-            <input 
-              type="number" 
-              value={restaurant.rating} 
-              onChange={(e) => {
-                const value = Math.min(5, Math.max(0, Number(e.target.value)));
-                setRestaurant({ ...restaurant, rating: value });
-              }} 
+           <select
+              value={restaurant.kategori}
+              onChange={(e) => setRestaurant({ ...restaurant, kategori: e.target.value })}
               className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
-            />
+            >
+              <option value="">Pilih Kategori</option>
+              <option value="Ayam">Ayam</option>
+              <option value="Sapi">Sapi</option>
+              <option value="Babi">Babi</option>
+              <option value="Bebek">Bebek</option>
+              <option value="Dessert">Dessert</option>
+              <option value="Camilan">Camilan</option>
+              <option value="Seafood">Seafood</option>
+            </select>
             <button 
               type="submit" 
               className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200"
