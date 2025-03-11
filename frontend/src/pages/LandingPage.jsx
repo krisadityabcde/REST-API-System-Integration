@@ -61,7 +61,6 @@ function LandingPage() {
               <option value="Seafood">Seafood</option>
             </select>
 
-
             {/* Tombol Tambah Restoran */}
             <Link to="/tambah">
               <button className="px-4 py-2 bg-yellow-400 text-black font-semibold rounded-md">
@@ -81,8 +80,8 @@ function LandingPage() {
             filteredRestaurants.map((resto) => (
               <li key={resto.id} className="p-4 border rounded-lg flex justify-between items-center shadow bg-gray-50">
                 <div className="text-lg font-medium flex items-center gap-2">
-                  <span>{resto.name} - {resto.location}</span>
-                  <span className="flex items-center">📌 {resto.kategori}</span>
+                  <span>{resto.name} - 📌<a className="text-blue-500 underline" href={resto.location} target="_blank">Google Maps</a></span>
+                  <span className="flex items-center"> #{resto.kategori}</span>
                 </div>
                 <div className="space-x-2 flex items-center">
                   <Link to={`/${resto.id}/edit`}>
